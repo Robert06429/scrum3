@@ -1,0 +1,24 @@
+{
+  "name": "bitboard",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Robert06429/scrum3#readme",
+  "bugs": {
+    "url": "https://github.com/Robert06429/scrum3/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robert06429/scrum3.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "style": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}
