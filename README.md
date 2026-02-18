@@ -6,3 +6,6 @@
 - javascript
 - php
 - xampp
+- laravel
+- Inertia
+- react
