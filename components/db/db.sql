@@ -8,13 +8,14 @@ CREATE TABLE `users` (
   `id` integer PRIMARY KEY,
   `email` varchar(255),
   `username` varchar(255),
+  `profileFoto` varchar(255),
   `password` varchar(255),
   `role` varchar(255) COMMENT 'admin or student',
   `created_at` timestamp
 );
 
 CREATE TABLE `media` (
-  `id` integer PRIMARY KEY COMMENT 'maybe the only table we need',
+  `id` integer PRIMARY KEY,
   `catogory` varchar(255),
   `title` varchar(255),
   `img` varchar(255),
@@ -28,7 +29,7 @@ CREATE TABLE `rating` (
   `id` integer PRIMARY KEY,
   `media_id` integer,
   `user_id` integer NOT NULL COMMENT 'only for admin to see',
-  `rating` integer COMMENT '1 tot 5',
+  `rating` integer COMMENT '1 tot 10',
   `created_at` timestamp
 );
 

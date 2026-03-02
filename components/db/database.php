@@ -1,6 +1,6 @@
 <?php
 
-$host = 'localhost';
+$host = '84.26.90.31';
 $db   = 'media_db';
 $user = 'bit_academy';
 $pass = 'bit_academy';
