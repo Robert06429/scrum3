@@ -5,13 +5,13 @@ session_start();
 require('database.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
-    $_SESSION["username"] = $username;
+    $_SESSION["email"] = $email;
 }
 
-$stmt = $pdo->prepare("SELECT * FROM users WHERE username =:username");
-$stmt->bindParam(':username', $username, PDO::PARAM_STR);
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email =:email");
+$stmt->bindParam(':email', $email, PDO::PARAM_STR);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -25,5 +25,5 @@ if ($user) {
         $errorMessage = "Password is wrong";
     }
 } else {
-    $errorMessage = "Username does not exist";
+    $errorMessage = "email does not exist";
 }
