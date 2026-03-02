@@ -1,7 +1,0 @@
-<?php
-
-session_start();
-session_destroy();
-header(header: 'Location: home.php');
-
-//nog niet klaar
