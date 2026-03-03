@@ -1,8 +1,9 @@
+import Stars from "./Stars.jsx";
 export default function Comment() {
     return (
         <div className="bg-white border border-black/10 rounded-lg shadow-np p-2">
-            <p>
-                User: <span className="font-icons text-2xl text-yellow-500"></span>
+            <p className="font-semibold">
+                User: <Stars value={7}></Stars>
             </p>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quod veniam beatae ab tenetur
