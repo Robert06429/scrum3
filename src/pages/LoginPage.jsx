@@ -1,11 +1,15 @@
+import { Axios } from "axios";
 import Noorderpoort from "./../assets/noorderpoort.png";
 export default function LoginPage() {
+    function HandleSubmit(e) {
+        e.preventDefault();
+    }
     return (
         <div className="h-dvh w-dvw flex justify-center items-center">
             <img className="absolute top-4 left-4 w-80 grayscale contrast-200" src={Noorderpoort} alt="Logo" />
             <div className="bg-white rounded-lg border border-black/10 shadow-np py-12 flex flex-col justify-center items-center w-[40rem]">
                 <h2 className="text-4xl text-center font-bold font-roboto">Welkom</h2>
-                <form className="flex flex-col items-center w-2/3" action="">
+                <form className="flex flex-col items-center w-2/3" onSubmit={HandleSubmit}>
                     <div className="relative my-4 w-full">
                         <label className="absolute left-5 text-black/25 top-1 text-sm" for="email">
                             <span className="font-icons">󰇮</span> E-mail
