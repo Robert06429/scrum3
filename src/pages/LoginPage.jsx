@@ -8,13 +8,13 @@ export default function LoginPage() {
                 email: e.target.email.value,
                 password: e.target.password.value,
             });
-            console.log("one ",response);
+            console.log("one ", response);
         } catch (error) {
             console.error("Login failed:", error);
         }
-    }
+    };
     return (
-        <div className="h-dvh w-dvw flex justify-center items-center">
+        <div className="h-dvh w-dvw flex bg-np justify-center items-center">
             <img className="absolute top-4 left-4 w-80 grayscale contrast-200" src={Noorderpoort} alt="Logo" />
             <div className="bg-white rounded-lg border border-black/10 shadow-np py-12 flex flex-col justify-center items-center w-[40rem]">
                 <h2 className="text-4xl text-center font-bold font-roboto">Welkom</h2>

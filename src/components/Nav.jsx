@@ -10,11 +10,11 @@ export default function Nav() {
                         <img className="w-60 px-2" src={Noorderpoort} alt="noorderpoort" />
                     </a>
                     <div className="text-2xl font-roboto font-bold">
-                        <Link className="mx-1 font-roboto" to="/">
+                        <Link
+                            className="mx-4 transition rounded-lg p-1 font-roboto hover:bg-np hover:text-black"
+                            to="/"
+                        >
                             Home
-                        </Link>
-                        <Link className="mx-1" to="/login">
-                            Login
                         </Link>
                     </div>
                 </div>

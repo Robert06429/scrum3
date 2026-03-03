@@ -1,13 +1,17 @@
+import { useState } from "react";
 import Nav from "./../components/Nav.jsx";
-import Comment from "./../components/Comment.jsx";
 import Heading from "./../components/Heading.jsx";
 import ListItem from "./../components/ListItem.jsx";
 
 export default function HomePage() {
+    let [arr, setArr] = useState();
+    fetch(`#`)
+        .then((data) => data.json())
+        .then((data) => setArr(data));
     return (
         <>
             <Nav></Nav>
-            <div className="px-[20rem] py-3">
+            <div className=" px-2 md: px-[7rem] lg:px-[12rem] xl:px-[20rem] py-3">
                 <Heading title="Films"></Heading>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                     <div className="md:order-2">
