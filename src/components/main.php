@@ -1,28 +1,54 @@
 <?php
 
 header('Content-Type: application/json');
+include_once 'db/database.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'get') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $date = $_GET['date'] ?? null;
     switch ($date) {
         case 'altijd':
-
-            $stmt = $pdo->prepare("SELECT * FROM media INNER JOIN likes ON media.id = likes.media_id ORDER BY COUNT(likes.media_id) LIMIT 10 JOIN users ON media.user_id = users.id");
+            $stmt = $pdo->prepare("
+                SELECT media.*, users.*, COUNT(rating.media_id) AS like_count
+                FROM media
+                INNER JOIN rating ON media.id = rating.media_id
+                INNER JOIN users ON media.user_id = users.id
+                GROUP BY media.id
+                ORDER BY like_count DESC
+                LIMIT 10
+            ");
             $stmt->execute();
             $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
             break;
 
         case 'week':
             $sevenDaysAgo = date('Y-m-d', strtotime('-7 days'));
-            $stmt = $pdo->prepare("SELECT * FROM media INNER JOIN likes ON media.id = likes.media_id ORDER BY COUNT(likes.media_id) LIMIT 10 JOIN users ON media.user_id = users.id WHERE likes.created_at >= :sevenDaysAgo");
-            $stmt->execute();
+            $stmt = $pdo->prepare("
+                SELECT media.*, users.*, COUNT(rating.media_id) AS like_count
+                FROM media
+                INNER JOIN rating ON media.id = rating.media_id
+                INNER JOIN users ON media.user_id = users.id
+                WHERE rating.created_at >= :sevenDaysAgo
+                GROUP BY media.id
+                ORDER BY like_count DESC
+                LIMIT 10
+            ");
+            $stmt->execute(['sevenDaysAgo' => $sevenDaysAgo]);
             $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
             break;
 
         case 'maand':
             $dertigDaysAgo = date('Y-m-d', strtotime('-30 days'));
-            $stmt = $pdo->prepare("SELECT * FROM media INNER JOIN likes ON media.id = likes.media_id ORDER BY COUNT(likes.media_id) LIMIT 10 JOIN users ON media.user_id = users.id WHERE likes.created_at >= :dertigDaysAgo");
-            $stmt->execute();
+            $stmt = $pdo->prepare("
+                SELECT media.*, users.*, COUNT(rating.media_id) AS like_count
+                FROM media
+                INNER JOIN rating ON media.id = rating.media_id
+                INNER JOIN users ON media.user_id = users.id
+                WHERE rating.created_at >= :dertigDaysAgo
+                GROUP BY media.id
+                ORDER BY like_count DESC
+                LIMIT 10
+            ");
+            $stmt->execute(['dertigDaysAgo' => $dertigDaysAgo]);
             $media = $stmt->fetchAll(PDO::FETCH_ASSOC);
             break;
 
