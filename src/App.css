@@ -1,8 +1,10 @@
 @import Url("https://www.nerdfonts.com/assets/css/webfont.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
     --font-icons: "./assets/fonts/UbuntuNerdFont-Regular.ttf";
     --color-np: #f2d420;
-    --shadow-np: 4px 4px 20px #0000003f;
+    --shadow-np: 4px 4px 10px #0000003f;
+    --font-roboto: "roboto";
 }
