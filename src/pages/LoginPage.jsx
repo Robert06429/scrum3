@@ -1,8 +1,17 @@
-import { Axios } from "axios";
+import axios from "axios";
 import Noorderpoort from "./../assets/noorderpoort.png";
 export default function LoginPage() {
-    function HandleSubmit(e) {
+    const HandleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:8000/components/db/login.php", {
+                email: e.target.email.value,
+                password: e.target.password.value,
+            });
+            console.log("one ",response);
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
     }
     return (
         <div className="h-dvh w-dvw flex justify-center items-center">
