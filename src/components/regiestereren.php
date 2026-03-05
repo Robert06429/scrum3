@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $data->username;
     $email = $data->email;
     $password = $data->password;
+    $password = password_hash($password, PASSWORD_DEFAULT);
 
     if (check($username, $email, $password)){
         $errorMessage = "error";

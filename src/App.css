@@ -1,1 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
+
+@font-face {
+    font-family: "icons";
+    src: url("./assets/fonts/UbuntuNerdFont-Regular.ttf");
+}
+
+@theme {
+    --font-icons: "icons";
+    --color-np: #f7d402;
+    --shadow-np: 4px 4px 10px #0000003f;
+    --font-roboto: "roboto";
+}
