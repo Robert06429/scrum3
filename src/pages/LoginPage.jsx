@@ -4,7 +4,7 @@ export default function LoginPage() {
     const HandleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8000/components/db/login.php", {
+            const response = await axios.post("http://localhost:8000/src/database/login.php", {
                 email: e.target.email.value,
                 password: e.target.password.value,
             });

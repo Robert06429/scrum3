@@ -9,7 +9,7 @@ export default function HomePage() {
     useEffect(() => {
         // http://localhost:8000/src/components/main.php?date=altijd
         // https://api.imdbapi.dev/titles
-        fetch(`http://localhost:8000/src/components/main.php?date=altijd`)
+        fetch(`http://localhost:8000/src/database/main.php?date=altijd`)
             .then((data) => data.json())
             .then((data) => {
                 setArr(data);
