@@ -1,5 +1,6 @@
 import Stars from "./Stars.jsx";
 export default function ListItem({ data, index }) {
+    let date = new Date(data.created_at);
     return (
         <li key={index} className="bg-white odd:bg-black/3 p-2 rounded-xl flex flex-row my-1">
             <div className="">
@@ -18,7 +19,7 @@ export default function ListItem({ data, index }) {
                             </div>
                             <p className="text-2xl font-bold">{data.title}</p>
                         </div>
-                        <p>{data.created_at}</p>
+                        <p>{date.getFullYear()}</p>
                     </div>
                     <Stars value={Math.round(data.like_count)}></Stars>
                 </div>

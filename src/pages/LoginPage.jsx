@@ -9,6 +9,9 @@ export default function LoginPage() {
                 password: e.target.password.value,
             });
             console.log("one ", response);
+            if (response.data.user_id) {
+                window.location.pathname = "./";
+            }
         } catch (error) {
             console.error("Login failed:", error);
         }
