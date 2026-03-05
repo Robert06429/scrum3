@@ -1,3 +1,4 @@
+import Noorderpoort from "./../assets/noorderpoort.png";
 export default function RegistrationPage() {
     return (
         <div className="h-dvh w-dvw flex bg-np justify-center items-center">
@@ -5,6 +6,18 @@ export default function RegistrationPage() {
             <div className="bg-white m-4 rounded-lg border border-black/10 shadow-np py-12 flex flex-col justify-center items-center w-[40rem]">
                 <h2 className="text-4xl text-center font-bold font-roboto">Welkom</h2>
                 <form className="flex flex-col items-center w-full px-2 max-w-[20rem]">
+                    <div className="relative my-4 w-full">
+                        <label className="absolute left-5 text-black/25 font-bold top-1 text-sm" for="name">
+                            <span className="font-icons"></span> Gebruikersnaam
+                        </label>
+                        <input
+                            className="w-full transition-all outline-none bg-black/2 rounded-lg pt-6 p-1 px-4 border border-black/25 focus:border-np invalid:bg-red-500/5 focus:invalid:border-red-500 invalid:border-red-500 invalid:text-red-500"
+                            type="text"
+                            name="name"
+                            id="name"
+                        />
+                    </div>
+
                     <div className="relative my-4 w-full">
                         <label className="absolute left-5 text-black/25 font-bold top-1 text-sm" for="email">
                             <span className="font-icons">󰇮</span> E-mail
@@ -27,10 +40,21 @@ export default function RegistrationPage() {
                             id="password"
                         />
                     </div>
+                    <div className="relative my-4 w-full">
+                        <label className="absolute left-5 text-black/25 font-bold top-1 text-sm" for="confirm">
+                            <span className="font-icons"></span> Bevestig wachtword
+                        </label>
+                        <input
+                            className="w-full transition-all outline-none bg-black/2 rounded-lg pt-6 p-1 px-4 border border-black/25 focus:border-np invalid:bg-red-500/5 focus:invalid:border-red-500 invalid:border-red-500 invalid:text-red-500"
+                            type="password"
+                            name="confirm"
+                            id="confirm"
+                        />
+                    </div>
                     <input
                         className="bg-np transition-all rounded-full font-bold font-roboto text-xl my-4 p-3 w-full active:bg-black active:scale-[1] active:text-np hover:scale-[1.1]"
                         type="submit"
-                        value="Login"
+                        value="Registreren"
                     />
                 </form>
             </div>

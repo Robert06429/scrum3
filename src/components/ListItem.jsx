@@ -20,7 +20,7 @@ export default function ListItem({ data, index }) {
                         </div>
                         <p>{data.created_at}</p>
                     </div>
-                    <Stars value={data.like_count}></Stars>
+                    <Stars value={Math.round(data.like_count)}></Stars>
                 </div>
                 <div className="flex justify-center items-center">
                     <a
