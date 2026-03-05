@@ -1,29 +1,41 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Content-Type: application/json; charset=utf-8');
 session_start();
 
-require('database.php');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $_SESSION["email"] = $email;
+// Handle preflight requests
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+    http_response_code(200);
+    exit();
 }
 
-$stmt = $pdo->prepare("SELECT * FROM users WHERE email =:email");
-$stmt->bindParam(':email', $email, PDO::PARAM_STR);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+include_once 'database.php';
 
-$errorMessage = '';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $data = json_decode(file_get_contents("php://input"));
+    $email = $data->email;
+    $password = $data->password;
+    if (!$password || !$email) {
+        echo json_encode(['message' => 'Password and email are required']);
+        exit();
+    }
 
-if ($user) {
-    if ($password === $user['password']) {
-        header("Location: home.php");
-        exit;
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute(['email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($user && $password === $user['password']) { // password_verify($password, $user['password']) for hashed passwords
+        echo json_encode(['message' => 'Login successful']);
+        $_SESSION["user_id"] = $user['id'];
+        $_SESSION["username"] = $user['name'];
     } else {
-        $errorMessage = "Password is wrong";
+        echo json_encode(['message' => 'Invalid credentials: ' . $password . ' vs ' . $user['password']]);
     }
 } else {
-    $errorMessage = "email does not exist";
+    echo json_encode(['message' => 'Invalid request method']);
 }
+
+exit;
+?>
