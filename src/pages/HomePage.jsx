@@ -4,9 +4,11 @@ import Heading from "./../components/Heading.jsx";
 import ListItem from "./../components/ListItem.jsx";
 
 export default function HomePage() {
-    let [arr, setArr] = useState();
+    let [arr, setArr] = useState([]);
 
     useEffect(() => {
+        // http://localhost:8000/src/components/main.php?date=altijd
+        // https://api.imdbapi.dev/titles
         fetch(`http://localhost:8000/src/components/main.php?date=altijd`)
             .then((data) => data.json())
             .then((data) => {
@@ -38,8 +40,8 @@ export default function HomePage() {
 
                     <div className="col-span-2 md:order-1">
                         <ul>
-                            {testArr.map((item, i) => {
-                                return <ListItem key={i} data={item}></ListItem>;
+                            {arr.map((item, i) => {
+                                return <ListItem index={i + 1} key={i} data={item}></ListItem>;
                             })}
                         </ul>
                     </div>

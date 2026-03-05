@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Noorderpoort from "./../assets/noorderpoort-dark.png";
 export default function Nav() {
-    let popup = "";
+    let [popup, setPopup] = useState("hidden");
+
+    function toggle() {
+        if (popup === "hidden") {
+            setPopup("");
+        } else {
+            setPopup("hidden");
+        }
+    }
+
     return (
         <nav className="bg-black shadow-np border-b-4 sticky z-1000 top-0 border-np p-2 text-xl text-white flex justify-center">
             <div className="flex items-center justify-between flex-row w-full max-w-[74rem]">
@@ -19,12 +29,19 @@ export default function Nav() {
                     </div>
                 </div>
                 <div className="relative">
-                    <button className="font-bold">
+                    <button
+                        onClick={() => {
+                            toggle();
+                        }}
+                        className="font-bold hover:cursor-pointer"
+                    >
                         User <span className="font-icons"></span>
                     </button>
                     <div className={popup}>
-                        <div className="absolute bg-black border border-white/24 rounded-lg p-2">
-                            <button>Loguit</button>
+                        <div className="transition-all absolute bg-black border border-white/24 rounded-lg p-2">
+                            <button className="hover:text-red-500">
+                                <span className="font-icons mr-1"></span>Loguit
+                            </button>
                         </div>
                     </div>
                 </div>
