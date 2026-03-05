@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Nav from "./../components/Nav.jsx";
 import Heading from "./../components/Heading.jsx";
 import ListItem from "./../components/ListItem.jsx";
 
 export default function HomePage() {
     let [arr, setArr] = useState();
-    fetch(`localhost:8000`)
-        .then((data) => data.json())
-        .then((data) => setArr(data));
-
+    // async function fetchDB() {
+    //      let req = await fetch(`http"//localhost:8000/src/components/main.php?date=altijd`);
+    //     let res = await req.json();
+    //     console.log(res);
+    //      return res;
+    //  }
+    //
+    useEffect(() => {
+        fetch(`http://localhost:8000/src/components/main.php?date=altijd`)
+            .then((data) => data.json())
+            .then((data) => {
+                setArr(data);
+                console.log(data);
+            });
+    }, []);
+    console.log(arr);
     let testArr = [
         { place: 1, rating: 10, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
         { place: 2, rating: 9, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },

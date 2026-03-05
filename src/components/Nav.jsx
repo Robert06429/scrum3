@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Noorderpoort from "./../assets/noorderpoort-dark.png";
 export default function Nav() {
+    let popup = "";
     return (
         <nav className="bg-black shadow-np border-b-4 sticky z-1000 top-0 border-np p-2 text-xl text-white flex justify-center">
             <div className="flex items-center justify-between flex-row w-full max-w-[74rem]">
