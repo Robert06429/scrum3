@@ -9,11 +9,11 @@ export default function LoginPage() {
                 password: e.target.password.value,
             });
             console.log("one ", response);
-            if (localStorage.getItem("user_id") === null) {
-                localStorage.setItem("user_id", response.data.user_id);
-            }
 
             if (response.data.user_id != undefined) {
+                if (localStorage.getItem("user_id") === null) {
+                    localStorage.setItem("user_id", response.data.user_id);
+                }
                 window.location = "/#/";
             }
             ("Login successful");

@@ -39,7 +39,13 @@ export default function Nav() {
                     </button>
                     <div className={popup}>
                         <div className="transition-all absolute bg-black border border-white/24 rounded-lg p-2">
-                            <button className="hover:text-red-500">
+                            <button
+                                className="hover:text-red-500"
+                                onClick={() => {
+                                    localStorage.removeItem("user_id");
+                                    window.location = "/#/login";
+                                }}
+                            >
                                 <span className="font-icons mr-1"></span>Loguit
                             </button>
                         </div>
