@@ -22,14 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode(['message' => 'Password and email are required']);
         exit();
     }
-
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
     $stmt->execute(['email' => $email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $user_id = $user[id]
+
     if ($user && password_verify($password, $user['password'])) {
-        echo json_encode(['message' => 'Login successful', 'user_id' => $user['id'], 'username' => $user['name']]);
-        $_SESSION["user_id"] = $user['id'];
-        $_SESSION["username"] = $user['name'];
+        echo json_encode(['message' => 'test' ]);
+        exit;
     } else {
         echo json_encode(['message' => 'Invalid email or password']);
     }
