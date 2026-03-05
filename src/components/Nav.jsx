@@ -4,7 +4,6 @@ export default function Nav() {
     return (
         <nav className="bg-black shadow-np border-b-4 sticky z-1000 top-0 border-np p-2 text-xl text-white flex justify-center">
             <div className="flex items-center justify-between flex-row w-full max-w-[74rem]">
-                {" "}
                 <div className="flex flex-row items-center">
                     <a href="/">
                         <img className="w-60 px-2" src={Noorderpoort} alt="noorderpoort" />
@@ -18,10 +17,15 @@ export default function Nav() {
                         </Link>
                     </div>
                 </div>
-                <div>
-                    <p className="font-bold">
+                <div className="relative">
+                    <button className="font-bold">
                         User <span className="font-icons"></span>
-                    </p>
+                    </button>
+                    <div className={popup}>
+                        <div className="absolute bg-black border border-white/24 rounded-lg p-2">
+                            <button>Loguit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

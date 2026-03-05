@@ -5,9 +5,22 @@ import ListItem from "./../components/ListItem.jsx";
 
 export default function HomePage() {
     let [arr, setArr] = useState();
-    fetch(`#`)
+    fetch(`localhost:8000`)
         .then((data) => data.json())
         .then((data) => setArr(data));
+
+    let testArr = [
+        { place: 1, rating: 10, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 2, rating: 9, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 3, rating: 9, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 4, rating: 8, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 5, rating: 8, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 6, rating: 7, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 7, rating: 5, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 8, rating: 5, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 9, rating: 3, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+        { place: 10, rating: 1, img: "https://placehold.co/400x600", name: "Film", date: "2026-03-05" },
+    ];
     return (
         <>
             <Nav></Nav>
@@ -19,15 +32,11 @@ export default function HomePage() {
                     </div>
 
                     <div className="col-span-2 md:order-1">
-                        <ListItem place={1} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={2} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={3} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={4} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={6} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={7} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={8} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={9} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
-                        <ListItem place={10} rating={9} img="https://placehold.co/400x600" item="Film"></ListItem>
+                        <ul>
+                            {testArr.map((item, i) => {
+                                return <ListItem key={i} data={item}></ListItem>;
+                            })}
+                        </ul>
                     </div>
                 </div>
             </div>
