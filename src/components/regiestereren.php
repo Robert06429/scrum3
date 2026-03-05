@@ -53,3 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errorMessage = 'gelukt';
     echo json_encode($errorMessage);
 }
+
+exit;
+?>
