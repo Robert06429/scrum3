@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     switch ($date) {
         case 'altijd':
             $stmt = $pdo->prepare("
-                SELECT media.*, users.*, COUNT(rating.media_id) AS like_count
+                SELECT media.*, users.id, users.username, AVG(rating.rating) AS like_count
                 FROM media
                 INNER JOIN rating ON media.id = rating.media_id
                 INNER JOIN users ON media.user_id = users.id
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'week':
             $sevenDaysAgo = date('Y-m-d', strtotime('-7 days'));
             $stmt = $pdo->prepare("
-                SELECT media.*, users.*, COUNT(rating.media_id) AS like_count
+                SELECT media.*, users.id, users.username, AVG(rating.rating) AS like_count
                 FROM media
                 INNER JOIN rating ON media.id = rating.media_id
                 INNER JOIN users ON media.user_id = users.id
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'maand':
             $dertigDaysAgo = date('Y-m-d', strtotime('-30 days'));
             $stmt = $pdo->prepare("
-                SELECT media.*, users.*, COUNT(rating.media_id) AS like_count
+                SELECT media.*, users.id, users.username, AVG(rating.rating) AS like_count
                 FROM media
                 INNER JOIN rating ON media.id = rating.media_id
                 INNER JOIN users ON media.user_id = users.id
