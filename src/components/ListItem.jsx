@@ -6,7 +6,7 @@ export default function ListItem({ data }) {
                 <img
                     className="rounded-lg h-[6rem] object-cover aspect-[27/40]"
                     src={data.img}
-                    alt={`foto van ${data.name}`}
+                    alt={`foto van ${data.title}`}
                 />
             </div>
             <div className="flex flex-row justify-between w-full">
@@ -16,9 +16,9 @@ export default function ListItem({ data }) {
                             <div className="bg-np rounded-lg flex justify-center mr-2 items-center w-7 h-7">
                                 <p className="font-semibold text-sm"># {data.place}</p>
                             </div>
-                            <p className="text-2xl font-bold">{data.name}</p>
+                            <p className="text-2xl font-bold">{data.title}</p>
                         </div>
-                        <p>{data.date}</p>
+                        <p>{data.created_at}</p>
                     </div>
                     <Stars value={data.rating}></Stars>
                 </div>

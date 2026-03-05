@@ -5,19 +5,12 @@ import ListItem from "./../components/ListItem.jsx";
 
 export default function HomePage() {
     let [arr, setArr] = useState();
-    // async function fetchDB() {
-    //      let req = await fetch(`http"//localhost:8000/src/components/main.php?date=altijd`);
-    //     let res = await req.json();
-    //     console.log(res);
-    //      return res;
-    //  }
-    //
+
     useEffect(() => {
         fetch(`http://localhost:8000/src/components/main.php?date=altijd`)
             .then((data) => data.json())
             .then((data) => {
                 setArr(data);
-                console.log(data);
             });
     }, []);
     console.log(arr);
