@@ -9,9 +9,14 @@ export default function LoginPage() {
                 password: e.target.password.value,
             });
             console.log("one ", response);
-            if (response.data.user_id) {
-                window.location.pathname = "./";
+            if (localStorage.getItem("user_id") === null) {
+                localStorage.setItem("user_id", response.data.user_id);
             }
+
+            if (response.data.user_id != undefined) {
+                window.location = "/#/";
+            }
+            ("Login successful");
         } catch (error) {
             console.error("Login failed:", error);
         }

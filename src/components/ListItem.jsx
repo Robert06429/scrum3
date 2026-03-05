@@ -19,7 +19,10 @@ export default function ListItem({ data, index }) {
                             </div>
                             <p className="text-2xl font-bold">{data.title}</p>
                         </div>
-                        <p>{date.getFullYear()}</p>
+                        <div className="flex flex-row">
+                            <p>{date.getFullYear()}</p>
+                            <p className="ml-1">{data.tags}</p>
+                        </div>
                     </div>
                     <Stars value={Math.round(data.like_count)}></Stars>
                 </div>
